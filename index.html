@@ -1,0 +1,63 @@
+<!doctype html>
+<html ng-app="myApp">
+<head>
+    <meta charset="utf-8">
+    <title>ng stuff</title>
+    <script>document.write('<base href="' + document.location + '" />');</script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.5/angular.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="css/angular.treeview.css">
+
+    <script src="app.js"></script>
+</head>
+<body>
+<a href="#/">Index</a> |<a href="#/other">Other</a>
+
+<br>
+<br>
+
+<div ng-app="myApp">
+    <div ng-controller="myController">
+
+        <div>
+            <button ng-click="roleList[0].children[1].collapsed = !roleList[0].children[1].collapsed">Toggle subUser2
+            </button>
+
+            {{roleList[0].children[1]}}
+        </div>
+
+        <div style="margin:10px 0 30px 0; padding:10px; background-color:#EEEEEE; border-radius:5px; font:12px Tahoma;">
+            <span><b>Selected Node</b> : {{mytree.currentNode.roleName}}</span>
+        </div>
+
+        <!--
+          [TREE attribute]
+          angular-treeview: the treeview directive
+          tree-id : each tree's unique id.
+          tree-model : the tree model on $scope.
+          node-id : each node's id
+          node-label : each node's label
+          node-children: each node's children
+        -->
+        <div
+                data-angular-treeview="true"
+                data-tree-id="mytree"
+                data-tree-model="roleList"
+                data-node-id="roleId"
+                data-node-label="roleName"
+                data-node-children="children">
+        </div>
+
+    </div>
+</div>
+<script type="application/javascript" src="angular.treeview.min.js"></script>
+
+<script type="text/ng-template" id="tplIndex.html">
+    Index Page
+</script>
+
+<script type="text/ng-template" id="tplOther.html">
+    Other Page that has other stuff!
+</script>
+</body>
+</html>
